@@ -1,0 +1,38 @@
+{
+  "HomePage": {
+    "title": "Next.js Starter",
+    "subtitle": "Boilerplate base.",
+    "cta": "Get started",
+    "signIn": "Sign in",
+    "footer": "Next.js 16 · TypeScript · Tailwind v4 · next-intl · Clerk · Supabase"
+  },
+  "Dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome to your dashboard.",
+    "signOut": "Sign out",
+    "supabaseConfigured": "configured",
+    "supabaseMock": "mock (env not set)"
+  },
+  "Header": {
+    "logo": "Starter",
+    "signIn": "Sign in",
+    "signOut": "Sign out"
+  },
+  "ThemeToggle": {
+    "ariaLabel": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "LocaleToggle": {
+    "ariaLabel": "Toggle language",
+    "en": "English",
+    "es": "Español"
+  },
+  "AuthMock": {
+    "message": "Mock mode: Clerk not configured.",
+    "messageSignInHint": "Use dashboard without signing in.",
+    "goToDashboard": "Go to dashboard",
+    "backToSignIn": "Back to sign-in"
+  }
+}
