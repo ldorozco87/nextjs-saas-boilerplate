@@ -61,13 +61,11 @@ Next.js 16 boilerplate with App Router, TypeScript, Tailwind v4, Shadcn/ui, Moti
 - `bun run dev` — Start dev server (Turbopack)
 - `bun run build` — Production build
 - `bun run start` — Start production server
-- `bun run lint` — ESLint
+- `bun run lint` — Biome (lint)
 - `bun run type-check` — `tsc --noEmit`
-- `bun run format` — Prettier (write)
-- `bun run format:check` — Prettier (check only)
-- `npm run audit:prod` — Audit **production** dependencies only (excludes devDependencies). The project considers audit successful when this passes.
-
-**Note:** Full `npm audit` may report 11 moderate vulnerabilities in **devDependencies** (ESLint/ajv chain; ReDoS when `$data` is used). These are accepted for now until upstream resolves them. Do not run `npm audit fix --force`—it would downgrade ESLint and break the project. Use `npm run audit:prod` to verify production dependencies are clean.
+- `bun run format` — Biome (format, write)
+- `bun run format:check` — Biome (format, check only)
+- `npm audit` — Auditoría de dependencias (debe pasar sin vulnerabilidades).
 
 ## Structure
 

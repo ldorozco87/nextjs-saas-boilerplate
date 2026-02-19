@@ -8,6 +8,7 @@ This folder is the **entry point for project documentation and specs**. Use it a
 
 **Quick references:**
 
+- **Lint & format:** Biome (see root README → Scripts)
 - **Auth (Clerk vs mock):** `src/lib/auth/config.ts`, `src/lib/auth/constants.ts`, `src/components/auth-provider.tsx`
 - **DB (Supabase vs mock):** `src/lib/db/config.ts` (`isSupabaseConfigured()`, `getSupabaseAnonKey()`), `src/lib/db/supabase/client.ts` and `server.ts`, `src/lib/db/mock.ts`
 - **i18n:** `src/i18n/routing.ts`, `messages/*.json`
