@@ -1,6 +1,6 @@
 import { createBrowserClient } from "@supabase/ssr";
 import { getSupabaseAnonKey, isSupabaseConfigured } from "../config";
-import { createMockSupabaseClient } from "../mock";
+import { createMockSupabaseClient } from "@/mocks/db";
 
 export function createClient() {
   if (!isSupabaseConfigured()) {

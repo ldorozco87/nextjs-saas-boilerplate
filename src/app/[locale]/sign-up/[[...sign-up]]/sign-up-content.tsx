@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { isClerkConfigured } from "@/lib/auth/config";
 import { clerkAppearance } from "@/lib/auth/constants";
 import { AuthPageLayout } from "@/components/auth-page-layout";
-import { MockAuthFallback } from "@/components/mock-auth-fallback";
+import { MockAuthFallback } from "@/mocks/auth";
 
 export function SignUpPageContent() {
   const locale = useLocale();

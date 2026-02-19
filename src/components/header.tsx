@@ -3,28 +3,11 @@
 import { UserButton } from "@clerk/nextjs";
 import { isClerkConfigured } from "@/lib/auth/config";
 import { clerkAppearance } from "@/lib/auth/constants";
-import { useMockAuth } from "@/lib/auth/mock";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Button } from "@/components/ui/button";
-import { SignOutButton } from "@/components/sign-out-button";
+import { MockAuthButton } from "@/mocks/auth";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LocaleToggle } from "@/components/locale-toggle";
-import { useTranslations } from "next-intl";
-
-function MockAuthButton() {
-  const t = useTranslations("Header");
-  const { user } = useMockAuth();
-
-  if (user) {
-    return <SignOutButton variant="outline" size="sm" />;
-  }
-
-  return (
-    <Button variant="outline" size="sm" asChild>
-      <Link href="/sign-in">{t("signIn")}</Link>
-    </Button>
-  );
-}
 
 export function Header() {
   const t = useTranslations("Header");

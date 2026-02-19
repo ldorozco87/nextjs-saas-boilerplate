@@ -73,11 +73,12 @@ Next.js 16 boilerplate with App Router, TypeScript, Tailwind v4, Shadcn/ui, Moti
 
 ## Structure
 
-- `src/app/[locale]/` — App Router with locale (en, es); dashboard has sidebar (`dashboard-sidebar.tsx`), mock guard (`dashboard-mock-guard.tsx`), and nav config
-- `src/components/` — UI (header, theme/locale toggles, landing hero, auth-page-layout, mock-auth-fallback, sign-out-button)
+- `src/app/[locale]/` — App Router with locale (en, es); dashboard has sidebar (`dashboard-sidebar.tsx`) and nav config
+- `src/components/` — UI (header, theme/locale toggles, landing hero, auth-page-layout, sign-out-button)
 - `src/components/ui/` — Shadcn components; `dropdown-option-toggle` for locale/theme toggles
 - `src/hooks/` — `useTheme`, `useLocaleToggle` (locales from `routing.locales`)
-- `src/lib/` — `utils`, `auth` (Clerk + mock, `constants` for shared Clerk appearance), `db` (Supabase + mock, `config` with `getSupabaseAnonKey()`)
+- `src/lib/` — `utils`, `auth` (config, Clerk appearance), `db` (Supabase config and client creators)
+- `src/mocks/` — Mock UI and logic: `auth/` (provider, guard, fallbacks, buttons), `db/` (Supabase client)
 - `src/i18n/` — next-intl routing, request, navigation; `locale.ts` for `LocalePageProps`, `getLocale()`
 - `messages/` — `en.json`, `es.json` (namespaces: HomePage, Dashboard, Header, ThemeToggle, LocaleToggle, AuthMock)
 - `src/proxy.ts` — Next.js 16 request pipeline (next-intl + Clerk dashboard protection when Clerk env is set). Do not add `middleware.ts`; Next.js 16 uses the proxy convention only.
@@ -94,6 +95,6 @@ See **`docs/README.md`** for a short doc index and pointers for AI agents or fut
 
 - **Landing** — Hero, CTAs (Get started, Sign in), footer (all i18n)
 - **Sign-in / Sign-up** — Clerk when configured; shared `MockAuthFallback` in mock mode (i18n)
-- **Dashboard** — Sidebar with nav (Dashboard link; extend via `DASHBOARD_NAV_ITEMS`). Protected when Clerk configured (layout redirect); in mock mode protected by client guard (`dashboard-mock-guard`). Sign out (shared `SignOutButton`) redirects to landing. Supabase status (configured vs mock) with i18n. Sample **items table**: reads from Supabase `items` (or empty with mock); same code path for both. See docs for creating the table in Supabase.
+- **Dashboard** — Sidebar with nav (Dashboard link; extend via `DASHBOARD_NAV_ITEMS`). Protected when Clerk configured (layout redirect); in mock mode protected by client guard (`src/mocks/auth/dashboard-mock-guard.tsx`). Sign out (shared `SignOutButton`) redirects to landing. Supabase status (configured vs mock) with i18n. Sample **items table**: reads from Supabase `items` (or empty with mock); same code path for both. See docs for creating the table in Supabase.
 - **Header** — Logo, locale toggle, theme toggle, UserButton or mock Sign in / Sign out (i18n). Sign out redirects to landing.
 - **Dark/light** — next-themes, `ThemeToggle` component

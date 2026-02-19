@@ -1,7 +1,7 @@
 "use client";
 
 import { ClerkProvider } from "@clerk/nextjs";
-import { MockAuthProvider } from "@/lib/auth/mock";
+import { MockAuthProvider } from "@/mocks/auth";
 import { isClerkConfigured } from "@/lib/auth/config";
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {

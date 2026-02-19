@@ -2,8 +2,8 @@
 
 import { useRouter } from "@/i18n/navigation";
 import { isClerkConfigured } from "@/lib/auth/config";
-import { MOCK_SIGNING_OUT_KEY } from "@/lib/auth/constants";
-import { useMockAuth } from "@/lib/auth/mock";
+import { MOCK_SIGNING_OUT_KEY } from "./constants";
+import { useMockAuth } from "./provider";
 import { useEffect } from "react";
 
 type Props = { children: React.ReactNode };

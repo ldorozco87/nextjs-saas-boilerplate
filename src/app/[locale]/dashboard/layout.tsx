@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { getLocale, type LocaleParams } from "@/i18n/locale";
 import { isClerkConfigured } from "@/lib/auth/config";
 import { DashboardSidebar } from "./dashboard-sidebar";
-import { DashboardMockGuard } from "./dashboard-mock-guard";
+import { DashboardMockGuard } from "@/mocks/auth";
 
 type Props = {
   children: React.ReactNode;

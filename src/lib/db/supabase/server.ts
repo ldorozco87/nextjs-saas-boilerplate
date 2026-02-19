@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { getSupabaseAnonKey, isSupabaseConfigured } from "../config";
-import { createMockSupabaseClient } from "../mock";
+import { createMockSupabaseClient } from "@/mocks/db";
 
 export async function createClient() {
   if (!isSupabaseConfigured()) {

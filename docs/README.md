@@ -9,12 +9,13 @@ This folder is the **entry point for project documentation and specs**. Use it a
 **Quick references:**
 
 - **Lint & format:** Biome (see root README → Scripts)
-- **Auth (Clerk vs mock):** `src/lib/auth/config.ts`, `src/lib/auth/constants.ts`, `src/components/auth-provider.tsx`
-- **DB (Supabase vs mock):** `src/lib/db/config.ts` (`isSupabaseConfigured()`, `getSupabaseAnonKey()`), `src/lib/db/supabase/client.ts` and `server.ts`, `src/lib/db/mock.ts`. Dashboard shows a sample table that queries `items` (columns: `id`, `name`, `created_at`). With mock it shows an empty state; with Supabase configured, create an `items` table with those columns (and RLS if needed) to see data.
+- **Mocks:** `src/mocks/auth/` (provider, guard, fallbacks, buttons), `src/mocks/db/` (Supabase client)
+- **Auth (Clerk vs mock):** `src/lib/auth/config.ts`, `src/lib/auth/constants.ts`, `src/components/auth-provider.tsx`. Mock implementation in `src/mocks/auth/`.
+- **DB (Supabase vs mock):** `src/lib/db/config.ts` (`isSupabaseConfigured()`, `getSupabaseAnonKey()`), `src/lib/db/supabase/client.ts` and `server.ts`, `src/mocks/db/` (mock client). Dashboard shows a sample table that queries `items` (columns: `id`, `name`, `created_at`). With mock it shows an empty state; with Supabase configured, create an `items` table with those columns (and RLS if needed) to see data.
 - **i18n:** `src/i18n/routing.ts`, `messages/*.json`
-- **Structure:** `src/app/[locale]/` (pages), `src/components/`, `src/lib/`
+- **Structure:** `src/app/[locale]/` (pages), `src/components/`, `src/lib/`, `src/mocks/`
 - **Request pipeline:** `src/proxy.ts` (Next.js 16; do not add `middleware.ts`)
 
-**Mock mode (auth):** When Clerk is not configured, the app uses in-memory mock auth. Initial state is signed out (`user === null`). User must go to the sign-in page and click "Go to dashboard" to "sign in" and access the dashboard. The dashboard is protected in mock mode by a client guard ([dashboard-mock-guard.tsx](../src/app/[locale]/dashboard/dashboard-mock-guard.tsx)), not by the proxy (the proxy does not protect routes when in mock). Sign out uses the shared [SignOutButton](../src/components/sign-out-button.tsx) (header and dashboard) and redirects to the landing page. Mock session does not persist on refresh (state is lost).
+**Mock mode (auth):** When Clerk is not configured, the app uses in-memory mock auth. Initial state is signed out (`user === null`). User must go to the sign-in page and click "Go to dashboard" to "sign in" and access the dashboard. The dashboard is protected in mock mode by a client guard ([dashboard-mock-guard.tsx](../src/mocks/auth/dashboard-mock-guard.tsx)), not by the proxy (the proxy does not protect routes when in mock). Sign out uses the shared [SignOutButton](../src/components/sign-out-button.tsx) (header and dashboard) and redirects to the landing page. Mock session does not persist on refresh (state is lost).
 
 See the root **README** for setup, conventions, and scripts.
