@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { getLocale, type LocalePageProps } from "@/i18n/locale";
 import { SupabaseDemo } from "./supabase-demo";
+import { DashboardTable } from "./dashboard-table";
 import { SignOutButton } from "@/components/sign-out-button";
 
 export default async function DashboardPage({ params }: LocalePageProps) {
@@ -13,6 +14,8 @@ export default async function DashboardPage({ params }: LocalePageProps) {
         <h1 className="text-2xl font-bold">{t("title")}</h1>
         <p className="mt-2 text-muted-foreground">{t("welcome")}</p>
         <SupabaseDemo />
+        <h2 className="mt-6 text-lg font-semibold">{t("tableTitle")}</h2>
+        <DashboardTable />
         <SignOutButton variant="outline" className="mt-6" />
       </div>
     </main>

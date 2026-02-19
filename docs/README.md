@@ -10,7 +10,7 @@ This folder is the **entry point for project documentation and specs**. Use it a
 
 - **Lint & format:** Biome (see root README → Scripts)
 - **Auth (Clerk vs mock):** `src/lib/auth/config.ts`, `src/lib/auth/constants.ts`, `src/components/auth-provider.tsx`
-- **DB (Supabase vs mock):** `src/lib/db/config.ts` (`isSupabaseConfigured()`, `getSupabaseAnonKey()`), `src/lib/db/supabase/client.ts` and `server.ts`, `src/lib/db/mock.ts`
+- **DB (Supabase vs mock):** `src/lib/db/config.ts` (`isSupabaseConfigured()`, `getSupabaseAnonKey()`), `src/lib/db/supabase/client.ts` and `server.ts`, `src/lib/db/mock.ts`. Dashboard shows a sample table that queries `items` (columns: `id`, `name`, `created_at`). With mock it shows an empty state; with Supabase configured, create an `items` table with those columns (and RLS if needed) to see data.
 - **i18n:** `src/i18n/routing.ts`, `messages/*.json`
 - **Structure:** `src/app/[locale]/` (pages), `src/components/`, `src/lib/`
 - **Request pipeline:** `src/proxy.ts` (Next.js 16; do not add `middleware.ts`)

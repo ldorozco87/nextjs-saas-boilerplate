@@ -11,6 +11,7 @@ export function LocaleToggle() {
 
   return (
     <DropdownOptionToggle
+      menuId="header-locale-menu"
       trigger={<Languages className="size-4" />}
       ariaLabel={t("ariaLabel")}
       options={locales.map((l) => ({ value: l, label: t(l) }))}

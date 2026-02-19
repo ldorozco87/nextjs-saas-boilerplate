@@ -1,12 +1,13 @@
-/** Minimal mock Supabase client when env vars are not set. No-op / empty responses. */
-export function createMockSupabaseClient() {
-  const noop = () => Promise.resolve({ data: [], error: null });
+const emptyResult = { data: [] as const, error: null };
+
+/** Chainable mock table: methods return self and the object is thenable so `await table.select().order()` works. */
+function createMockTable() {
   const mockTable = {
-    select: noop,
-    insert: noop,
-    update: noop,
-    upsert: noop,
-    delete: noop,
+    select: () => mockTable,
+    insert: () => mockTable,
+    update: () => mockTable,
+    upsert: () => mockTable,
+    delete: () => mockTable,
     eq: () => mockTable,
     neq: () => mockTable,
     gt: () => mockTable,
@@ -24,9 +25,17 @@ export function createMockSupabaseClient() {
     order: () => mockTable,
     single: () => Promise.resolve({ data: null, error: null }),
     maybeSingle: () => Promise.resolve({ data: null, error: null }),
+    then(onFulfilled: (value: typeof emptyResult) => unknown) {
+      return Promise.resolve(emptyResult).then(onFulfilled);
+    },
   };
+  return mockTable;
+}
+
+/** Minimal mock Supabase client when env vars are not set. No-op / empty responses. */
+export function createMockSupabaseClient() {
   return {
-    from: () => mockTable,
+    from: () => createMockTable(),
     auth: {
       getSession: () =>
         Promise.resolve({ data: { session: null }, error: null }),

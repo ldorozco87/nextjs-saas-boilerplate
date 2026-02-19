@@ -90,6 +90,6 @@ See **`docs/README.md`** for a short doc index and pointers for AI agents or fut
 
 - **Landing** — Hero, CTAs (Get started, Sign in), footer (all i18n)
 - **Sign-in / Sign-up** — Clerk when configured; shared `MockAuthFallback` in mock mode (i18n)
-- **Dashboard** — Sidebar with nav (Dashboard link; extend via `DASHBOARD_NAV_ITEMS`). Protected when Clerk configured (layout redirect); in mock mode protected by client guard (`dashboard-mock-guard`). Sign out (shared `SignOutButton`) redirects to landing. Supabase status (configured vs mock) with i18n.
+- **Dashboard** — Sidebar with nav (Dashboard link; extend via `DASHBOARD_NAV_ITEMS`). Protected when Clerk configured (layout redirect); in mock mode protected by client guard (`dashboard-mock-guard`). Sign out (shared `SignOutButton`) redirects to landing. Supabase status (configured vs mock) with i18n. Sample **items table**: reads from Supabase `items` (or empty with mock); same code path for both. See docs for creating the table in Supabase.
 - **Header** — Logo, locale toggle, theme toggle, UserButton or mock Sign in / Sign out (i18n). Sign out redirects to landing.
 - **Dark/light** — next-themes, `ThemeToggle` component

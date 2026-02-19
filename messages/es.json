@@ -11,7 +11,13 @@
     "welcome": "Bienvenido a tu panel.",
     "signOut": "Cerrar sesión",
     "supabaseConfigured": "configurado",
-    "supabaseMock": "mock (env no definido)"
+    "supabaseMock": "mock (env no definido)",
+    "tableTitle": "Elementos",
+    "tableEmpty": "Aún no hay elementos. Con Supabase configurado, crea una tabla \"items\" para ver datos aquí.",
+    "tableError": "Error al cargar los elementos.",
+    "columnId": "ID",
+    "columnName": "Nombre",
+    "columnCreatedAt": "Creado"
   },
   "Header": {
     "logo": "Starter",

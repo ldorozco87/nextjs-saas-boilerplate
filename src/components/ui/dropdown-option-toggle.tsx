@@ -21,6 +21,8 @@ type Props<T> = {
   options: DropdownOption<T>[];
   value: T;
   onValueChange: (value: T) => void;
+  /** Stable id for the menu root and trigger to avoid hydration mismatch (Radix useId). */
+  menuId?: string;
 };
 
 export function DropdownOptionToggle<T extends string>({
@@ -29,11 +31,18 @@ export function DropdownOptionToggle<T extends string>({
   options,
   value,
   onValueChange,
+  menuId,
 }: Props<T>) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" aria-label={ariaLabel}>
+        <Button
+          variant="ghost"
+          size="icon"
+          aria-label={ariaLabel}
+          id={menuId ? `${menuId}-trigger` : undefined}
+          suppressHydrationWarning
+        >
           {trigger}
         </Button>
       </DropdownMenuTrigger>

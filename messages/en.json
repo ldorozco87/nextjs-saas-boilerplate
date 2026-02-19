@@ -11,7 +11,13 @@
     "welcome": "Welcome to your dashboard.",
     "signOut": "Sign out",
     "supabaseConfigured": "configured",
-    "supabaseMock": "mock (env not set)"
+    "supabaseMock": "mock (env not set)",
+    "tableTitle": "Items",
+    "tableEmpty": "No items yet. With Supabase configured, create an \"items\" table to see data here.",
+    "tableError": "Failed to load items.",
+    "columnId": "ID",
+    "columnName": "Name",
+    "columnCreatedAt": "Created"
   },
   "Header": {
     "logo": "Starter",
