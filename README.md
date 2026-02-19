@@ -2,6 +2,10 @@
 
 Next.js 16 boilerplate with App Router, TypeScript, Tailwind v4, Shadcn/ui, Motion, next-intl (en/es), Clerk + Supabase (with mocks when env vars are missing), and dark/light theme. Intended as a **base for future SaaS projects**: DRY, clean code, full i18n, and shared patterns.
 
+**Vercel ready** — Deploy as-is by connecting your GitHub repo to [Vercel](https://vercel.com); set env vars in the project settings. No code changes required.
+
+**AI agents** — The **`docs/`** folder holds specs and context for AI tools (overview, agent rules, quick references). See **`docs/README.md`** for the index and **`docs/AGENT_RULES.md`** before changing the request pipeline or auth.
+
 ## Stack
 
 - **Framework:** Next.js 16.1.6 (App Router, Turbopack, Server Components)
@@ -65,7 +69,7 @@ Next.js 16 boilerplate with App Router, TypeScript, Tailwind v4, Shadcn/ui, Moti
 - `bun run type-check` — `tsc --noEmit`
 - `bun run format` — Biome (format, write)
 - `bun run format:check` — Biome (format, check only)
-- `npm audit` — Auditoría de dependencias (debe pasar sin vulnerabilidades).
+- `npm audit` — Dependency audit (must pass with no vulnerabilities).
 
 ## Structure
 
