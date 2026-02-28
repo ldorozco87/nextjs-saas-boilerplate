@@ -12,6 +12,12 @@ When editing this codebase, follow these rules to avoid breaking conventions or 
 
 - Mock mode (auth or DB) is decided only in **`src/lib/auth/config.ts`** and **`src/lib/db/config.ts`**. Do not duplicate env checks elsewhere; use `isClerkConfigured()` and `isSupabaseConfigured()` (and `getSupabaseAnonKey()` when creating Supabase clients).
 
+## Mobile-first and responsive design
+
+- The project is **mobile-first**. Design and implement layouts, components, and styles for small screens first, then enhance for larger breakpoints.
+- All UI must be **responsive**: use fluid layouts, responsive units (e.g. `rem`, `%`, `clamp()`), and media queries or container queries where needed so the app works well on phones, tablets, and desktops.
+- Avoid fixed widths that break on small viewports; prefer flex/grid and min/max constraints.
+
 ## Before changing request pipeline or auth
 
 - Check existing docs: `docs/README.md` (overview), this file (agent rules), root `README.md` (structure and setup).
