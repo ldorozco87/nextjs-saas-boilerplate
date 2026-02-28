@@ -8,6 +8,8 @@
   },
   "Dashboard": {
     "title": "Dashboard",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
     "welcome": "Welcome to your dashboard.",
     "signOut": "Sign out",
     "supabaseConfigured": "configured",

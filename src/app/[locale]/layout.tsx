@@ -21,9 +21,11 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <NextIntlClientProvider messages={messages}>
       <AuthProvider>
-        <div className="flex min-h-screen flex-col">
+        <div className="flex min-h-screen min-w-0 flex-col overflow-x-hidden">
           <Header />
-          {children}
+          <div className="min-h-0 flex-1 flex flex-col">
+            {children}
+          </div>
         </div>
       </AuthProvider>
     </NextIntlClientProvider>

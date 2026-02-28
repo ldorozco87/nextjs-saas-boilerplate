@@ -7,8 +7,10 @@
     "footer": "Next.js 16 · TypeScript · Tailwind v4 · next-intl · Clerk · Supabase"
   },
   "Dashboard": {
-    "title": "Panel",
-    "welcome": "Bienvenido a tu panel.",
+    "title": "Dashboard",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "welcome": "Bienvenido a tu dashboard.",
     "signOut": "Cerrar sesión",
     "supabaseConfigured": "configurado",
     "supabaseMock": "mock (env no definido)",
@@ -37,8 +39,8 @@
   },
   "AuthMock": {
     "message": "Modo mock: Clerk no configurado.",
-    "messageSignInHint": "Usa el panel sin iniciar sesión.",
-    "goToDashboard": "Ir al panel",
+    "messageSignInHint": "Usa el dashboard sin iniciar sesión.",
+    "goToDashboard": "Ir al dashboard",
     "backToSignIn": "Volver a iniciar sesión"
   }
 }

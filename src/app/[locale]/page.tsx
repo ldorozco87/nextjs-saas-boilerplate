@@ -9,7 +9,7 @@ export default async function HomePage({ params }: LocalePageProps) {
   const t = await getTranslations("HomePage");
 
   return (
-    <main className="flex min-h-[calc(100vh-3.5rem)] flex-col">
+    <main className="flex min-h-[calc(100vh-3.5rem)] flex-col min-h-[calc(100dvh-3.5rem)]">
       <LandingHero title={t("title")} subtitle={t("subtitle")}>
         <Button size="lg" type="button">
           {t("cta")}
@@ -18,7 +18,7 @@ export default async function HomePage({ params }: LocalePageProps) {
           <Link href="/sign-in">{t("signIn")}</Link>
         </Button>
       </LandingHero>
-      <footer className="border-t py-4 text-center text-sm text-muted-foreground">
+      <footer className="border-t px-4 py-3 text-center text-sm text-muted-foreground sm:px-6 sm:py-4">
         {t("footer")}
       </footer>
     </main>

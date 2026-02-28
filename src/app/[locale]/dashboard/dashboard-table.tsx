@@ -35,7 +35,7 @@ export async function DashboardTable() {
   }
 
   return (
-    <div className="mt-4 overflow-hidden rounded-lg border border-border">
+    <div className="mt-4 w-full overflow-x-auto overflow-y-hidden rounded-lg border border-border">
       <table className="w-full min-w-[280px] text-left text-sm">
         <thead>
           <tr className="border-b border-border bg-muted/50">
