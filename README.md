@@ -26,14 +26,21 @@ Next.js 16 boilerplate with App Router, TypeScript, Tailwind v4, Shadcn/ui, Moti
 
 ## Setup
 
-1. Install dependencies:
+1. **(Optional) Install Bun** — The project works with **npm** or **Bun**. To use Bun:
+   - **Windows (PowerShell):** `powershell -c "irm bun.sh/install.ps1 | iex"`
+   - **macOS/Linux:** see [bun.sh](https://bun.sh)
+   - **Alternative:** `npm install -g bun`
+   - Optionally use Corepack to pin the version: `corepack enable` then `corepack prepare bun@1.1.0 --activate`
+
+2. Install dependencies:
 
    ```bash
    bun install
    # or: npm install
    ```
+   If you use Bun, `bun install` will create a Bun lockfile (e.g. `bun.lock`); the repo may keep both `package-lock.json` and the Bun lockfile so either manager works.
 
-2. (Optional) Configure Clerk and Supabase via `.env.local`:
+3. (Optional) Configure Clerk and Supabase via `.env.local`:
 
    ```env
    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_...
@@ -46,14 +53,14 @@ Next.js 16 boilerplate with App Router, TypeScript, Tailwind v4, Shadcn/ui, Moti
 
    Mock mode is **per service**: auth mock when Clerk env is not set; DB mock when Supabase env is not set. They can be combined (e.g. real Clerk + mock Supabase). See `.env.example` for the variables; the decision is made in `src/lib/auth/config.ts` (Clerk) and `src/lib/db/config.ts` (Supabase). Without Clerk keys: mock auth (start signed out; use "Go to dashboard" on the sign-in page to sign in; dashboard protected by client guard). Without Supabase keys: mock Supabase (no-op client). Set the keys to enable real auth and real backend.
 
-3. Run dev:
+4. Run dev:
 
    ```bash
    bun run dev
    # or: npm run dev
    ```
 
-4. Build:
+5. Build:
 
    ```bash
    bun run build
@@ -62,14 +69,16 @@ Next.js 16 boilerplate with App Router, TypeScript, Tailwind v4, Shadcn/ui, Moti
 
 ## Scripts
 
-- `bun run dev` — Start dev server (Turbopack)
-- `bun run build` — Production build
-- `bun run start` — Start production server
-- `bun run lint` — Biome (lint)
-- `bun run type-check` — `tsc --noEmit`
-- `bun run format` — Biome (format, write)
-- `bun run format:check` — Biome (format, check only)
-- `npm audit` — Dependency audit (must pass with no vulnerabilities).
+Use `bun run <script>` or `npm run <script>`:
+
+- `bun run dev` (or `npm run dev`) — Start dev server (Turbopack)
+- `bun run build` (or `npm run build`) — Production build
+- `bun run start` (or `npm run start`) — Start production server
+- `bun run lint` (or `npm run lint`) — Biome (lint)
+- `bun run type-check` (or `npm run type-check`) — `tsc --noEmit`
+- `bun run format` (or `npm run format`) — Biome (format, write)
+- `bun run format:check` (or `npm run format:check`) — Biome (format, check only)
+- `bun audit` or `npm audit` — Dependency audit (must pass with no vulnerabilities).
 
 ## Structure
 

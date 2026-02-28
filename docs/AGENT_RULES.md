@@ -18,6 +18,10 @@ When editing this codebase, follow these rules to avoid breaking conventions or 
 - All UI must be **responsive**: use fluid layouts, responsive units (e.g. `rem`, `%`, `clamp()`), and media queries or container queries where needed so the app works well on phones, tablets, and desktops.
 - Avoid fixed widths that break on small viewports; prefer flex/grid and min/max constraints.
 
+## Scripts
+
+- Use `bun run <script>` or `npm run <script>`; both are supported (see root README).
+
 ## Before changing request pipeline or auth
 
 - Check existing docs: `docs/README.md` (overview), this file (agent rules), root `README.md` (structure and setup).
