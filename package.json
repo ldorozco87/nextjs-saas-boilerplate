@@ -5,12 +5,16 @@
   "packageManager": "bun@1.1.0",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "bun format && bun run lint && bun run type-check && next build",
+    "build": "bun format && bun lint && bun type-check && bun run test:run && bun run test:e2e && bun next build",
     "start": "next start",
     "lint": "biome lint .",
     "type-check": "tsc --noEmit",
     "format": "biome format --write .",
-    "format:check": "biome format ."
+    "format:check": "biome format .",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.36.10",
@@ -37,9 +41,13 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.2",
+    "@playwright/test": "^1.49.0",
     "@types/node": "^22.10.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "typescript": "~5.7.0"
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^25.0.1",
+    "typescript": "~5.7.0",
+    "vitest": "^2.1.6"
   }
 }

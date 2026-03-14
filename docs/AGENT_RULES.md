@@ -46,6 +46,12 @@ When editing this codebase, follow these rules to avoid breaking conventions or 
 
 - Use `bun run <script>` or `npm run <script>`; both are supported (see root README).
 
+## Testing
+
+- Write and maintain **unit and integration tests** with **Vitest** for logic, stores, and components that warrant them.
+- Write **e2e tests** with **Playwright** for critical flows (e.g. login, main navigation).
+- Follow the location and command conventions in **`docs/TESTING.md`**. When adding or changing features, add or update tests at the appropriate level.
+
 ## Before changing request pipeline or auth
 
 - Check existing docs: `docs/README.md` (overview), this file (agent rules), root `README.md` (structure and setup).

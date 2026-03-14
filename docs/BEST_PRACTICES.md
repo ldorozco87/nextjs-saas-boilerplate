@@ -14,6 +14,14 @@ This document is the reference for project best practices and technical conventi
 
 ---
 
+## Testing
+
+- **Unit and integration:** Vitest. Use for pure functions, stores (Zustand), and components (optionally with Testing Library). Respect existing mocks and config (`src/lib/auth/config.ts`, `src/lib/db/config.ts`).
+- **E2E:** Playwright. Use for critical user flows in a real browser.
+- Full reference: [TESTING.md](TESTING.md) (commands, structure, pyramid, good practices).
+
+---
+
 ## Backend
 
 - **Next.js App Router:** Prefer Server Actions and Route Handlers for API surface. Do not duplicate business logic in the client; keep it in server code.

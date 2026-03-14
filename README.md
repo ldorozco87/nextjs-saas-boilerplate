@@ -78,6 +78,9 @@ Use `bun run <script>` or `npm run <script>`:
 - `bun run type-check` (or `npm run type-check`) — `tsc --noEmit`
 - `bun run format` (or `npm run format`) — Biome (format, write)
 - `bun run format:check` (or `npm run format:check`) — Biome (format, check only)
+- `bun run test` (or `npm run test`) — Vitest (unit/integration, watch)
+- `bun run test:run` (or `npm run test:run`) — Vitest (single run, e.g. CI)
+- `bun run test:e2e` (or `npm run test:e2e`) — Playwright (e2e tests)
 - `bun audit` or `npm audit` — Dependency audit (must pass with no vulnerabilities).
 
 ## Structure
