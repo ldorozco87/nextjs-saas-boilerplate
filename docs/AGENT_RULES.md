@@ -52,7 +52,17 @@ When editing this codebase, follow these rules to avoid breaking conventions or 
 - Write **e2e tests** with **Playwright** for critical flows (e.g. login, main navigation).
 - Follow the location and command conventions in **`docs/TESTING.md`**. When adding or changing features, add or update tests at the appropriate level.
 
+## MCP
+
+- You may use the project's MCP servers (**user-supabase**, **user-clerk**) when useful: apply migrations, run SQL, list tables/branches, or consult Clerk/Supabase documentation. Tool descriptors are available in the workspace (e.g. `mcps/` folder when present). Use them according to the MCP tool schema before calling any tool.
+
+## Plan de integración (nuevo proyecto)
+
+- When using this boilerplate to start a **new** project in a clean repo, follow the **PLAN.md** in the root. For Clerk + Supabase integration, follow **docs/setup/CLERK_SUPABASE.md**.
+- Do not assume a `middleware.ts`-based pipeline; this project uses **`proxy.ts`** (Next.js 16).
+
 ## Before changing request pipeline or auth
 
 - Check existing docs: `docs/README.md` (overview), this file (agent rules), root `README.md` (structure and setup).
+- For changes that affect auth or how Supabase clients are created, also read **docs/setup/CLERK_SUPABASE.md** (third-party Clerk auth, `accessToken`-based clients).
 - Do not assume older Next.js conventions (e.g. `middleware.ts`) without confirming the project's Next version and current setup.

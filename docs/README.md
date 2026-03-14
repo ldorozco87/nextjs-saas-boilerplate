@@ -8,6 +8,7 @@ This folder is the **entry point for project documentation and specs**. Use it a
 
 **Quick references:**
 
+- **Setup Clerk + Supabase:** [setup/CLERK_SUPABASE.md](setup/CLERK_SUPABASE.md) — configuración paso a paso para integración real (third-party auth, env vars, clientes con `accessToken`). Al integrar el boilerplate en un repo limpio, usar también el **PLAN.md** de la raíz (Fase 0: limpieza de mocks e integración Clerk + Supabase).
 - **Best practices:** [BEST_PRACTICES.md](BEST_PRACTICES.md) — frontend, backend, DB design.
 - **Testing:** [TESTING.md](TESTING.md) — unit/integration (Vitest), e2e (Playwright). Commands: `bun run test`, `bun run test:run`, `bun run test:e2e`.
 - **Package managers:** npm and Bun; see root README for Bun installation and scripts.

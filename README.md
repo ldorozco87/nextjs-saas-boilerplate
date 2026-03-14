@@ -4,7 +4,7 @@ Next.js 16 boilerplate with App Router, TypeScript, Tailwind v4, Shadcn/ui, Moti
 
 **Vercel ready** — Deploy as-is by connecting your GitHub repo to [Vercel](https://vercel.com); set env vars in the project settings. No code changes required.
 
-**AI agents** — The **`docs/`** folder holds specs and context for AI tools (overview, agent rules, quick references). See **`docs/README.md`** for the index and **`docs/AGENT_RULES.md`** before changing the request pipeline or auth.
+**AI agents** — The **`docs/`** folder holds specs and context for AI tools (overview, agent rules, quick references). See **`docs/README.md`** for the index and **`docs/AGENT_RULES.md`** before changing the request pipeline or auth. When integrating this boilerplate into a **new project** (clean repo), follow **`PLAN.md`** and **`docs/setup/CLERK_SUPABASE.md`** for Clerk + Supabase setup.
 
 ## Stack
 
@@ -16,6 +16,10 @@ Next.js 16 boilerplate with App Router, TypeScript, Tailwind v4, Shadcn/ui, Moti
 - **i18n:** next-intl 4.7 (en / es, locale from `src/i18n/routing.ts`)
 - **Auth:** Clerk (mocks when `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` not set)
 - **DB/Backend:** Supabase (mocks when `NEXT_PUBLIC_SUPABASE_*` not set)
+- **API state:** TanStack Query (fetching, caching, mutations in client components)
+- **Global client state:** Zustand (UI state, preferences; not for API data)
+- **Testing:** Vitest (unit/integration), Playwright (e2e); see [docs/TESTING.md](docs/TESTING.md)
+- **Lint & format:** Biome
 - **Package manager:** bun (or npm)
 
 ## Conventions
@@ -23,6 +27,9 @@ Next.js 16 boilerplate with App Router, TypeScript, Tailwind v4, Shadcn/ui, Moti
 - **No hardcoded copy** — All user-facing text lives in `messages/en.json` and `messages/es.json` and is used via `useTranslations` / `getTranslations` (next-intl).
 - **DRY** — Single source of truth for locales (`routing.locales`), auth config (`lib/auth/config`), DB config (`lib/db/config`, including `getSupabaseAnonKey()`), shared UI (e.g. `AuthPageLayout`, `MockAuthFallback`, `SignOutButton` for header and dashboard).
 - **Clean structure** — Feature-oriented under `app/[locale]/`, shared components in `components/`, config and mocks in `lib/`.
+- **State** — Use **TanStack Query** for all API state (useQuery, useMutation); use **Zustand** for global client state (UI, preferences). See [docs/AGENT_RULES.md](docs/AGENT_RULES.md).
+- **Components** — Reuse existing UI from `src/components/ui/`; register new reusable components in [docs/COMPONENT_DICTIONARY.md](docs/COMPONENT_DICTIONARY.md).
+- **Mobile-first** — Layouts and styles are mobile-first and responsive; see agent rules for details.
 
 ## Setup
 
@@ -51,7 +58,7 @@ Next.js 16 boilerplate with App Router, TypeScript, Tailwind v4, Shadcn/ui, Moti
    # or NEXT_PUBLIC_SUPABASE_ANON_KEY=...
    ```
 
-   Mock mode is **per service**: auth mock when Clerk env is not set; DB mock when Supabase env is not set. They can be combined (e.g. real Clerk + mock Supabase). See `.env.example` for the variables; the decision is made in `src/lib/auth/config.ts` (Clerk) and `src/lib/db/config.ts` (Supabase). Without Clerk keys: mock auth (start signed out; use "Go to dashboard" on the sign-in page to sign in; dashboard protected by client guard). Without Supabase keys: mock Supabase (no-op client). Set the keys to enable real auth and real backend.
+   Mock mode is **per service**: auth mock when Clerk env is not set; DB mock when Supabase env is not set. They can be combined (e.g. real Clerk + mock Supabase). See `.env.example` for the variables; the decision is made in `src/lib/auth/config.ts` (Clerk) and `src/lib/db/config.ts` (Supabase). Without Clerk keys: mock auth (start signed out; use "Go to dashboard" on the sign-in page to sign in; dashboard protected by client guard). Without Supabase keys: mock Supabase (no-op client). Set the keys to enable real auth and real backend. For **step-by-step real integration** (third-party Clerk auth, Supabase clients with `accessToken`), see [docs/setup/CLERK_SUPABASE.md](docs/setup/CLERK_SUPABASE.md).
 
 4. Run dev:
 
@@ -81,12 +88,15 @@ Use `bun run <script>` or `npm run <script>`:
 - `bun run test` (or `npm run test`) — Vitest (unit/integration, watch)
 - `bun run test:run` (or `npm run test:run`) — Vitest (single run, e.g. CI)
 - `bun run test:e2e` (or `npm run test:e2e`) — Playwright (e2e tests)
+- `bun run test:e2e:ui` (or `npm run test:e2e:ui`) — Playwright with UI mode
 - `bun audit` or `npm audit` — Dependency audit (must pass with no vulnerabilities).
+
+See [docs/TESTING.md](docs/TESTING.md) for test layout (Vitest next to code, Playwright in `e2e/`), config, and practices.
 
 ## Structure
 
 - `src/app/[locale]/` — App Router with locale (en, es); dashboard has sidebar (`dashboard-sidebar.tsx`) and nav config
-- `src/components/` — UI (header, theme/locale toggles, landing hero, auth-page-layout, sign-out-button)
+- `src/components/` — UI (header, theme/locale toggles, landing hero, auth-page-layout, sign-out-button, `QueryProvider` for TanStack Query)
 - `src/components/ui/` — Shadcn components; `dropdown-option-toggle` for locale/theme toggles
 - `src/hooks/` — `useTheme`, `useLocaleToggle` (locales from `routing.locales`)
 - `src/lib/` — `utils`, `auth` (config, Clerk appearance), `db` (Supabase config and client creators)
@@ -94,6 +104,8 @@ Use `bun run <script>` or `npm run <script>`:
 - `src/i18n/` — next-intl routing, request, navigation; `locale.ts` for `LocalePageProps`, `getLocale()`
 - `messages/` — `en.json`, `es.json` (namespaces: HomePage, Dashboard, Header, ThemeToggle, LocaleToggle, AuthMock)
 - `src/proxy.ts` — Next.js 16 request pipeline (next-intl + Clerk dashboard protection when Clerk env is set). Do not add `middleware.ts`; Next.js 16 uses the proxy convention only.
+- `e2e/` — Playwright e2e tests (e.g. `e2e/smoke.spec.ts`). Unit/integration tests live next to source as `*.test.ts` / `*.test.tsx`.
+- `docs/` — Project docs index ([docs/README.md](docs/README.md)), agent rules, testing, best practices, component dictionary; **`docs/setup/CLERK_SUPABASE.md`** for Clerk + Supabase integration. **`PLAN.md`** (root) for integrating the boilerplate into a new repo.
 
 ## i18n
 
