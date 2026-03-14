@@ -23,9 +23,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <AuthProvider>
         <div className="flex min-h-screen min-w-0 flex-col overflow-x-hidden">
           <Header />
-          <div className="min-h-0 flex-1 flex flex-col">
-            {children}
-          </div>
+          <div className="min-h-0 flex-1 flex flex-col">{children}</div>
         </div>
       </AuthProvider>
     </NextIntlClientProvider>

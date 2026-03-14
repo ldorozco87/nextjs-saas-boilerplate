@@ -20,7 +20,10 @@ export function DashboardShell({ children }: Props) {
           role="presentation"
           aria-hidden={!mobileOpen}
           className="fixed inset-0 z-40 bg-black/50 transition-opacity duration-200 md:hidden"
-          style={{ opacity: mobileOpen ? 1 : 0, pointerEvents: mobileOpen ? "auto" : "none" }}
+          style={{
+            opacity: mobileOpen ? 1 : 0,
+            pointerEvents: mobileOpen ? "auto" : "none",
+          }}
           onClick={() => setMobileOpen(false)}
         />
         <div className="flex w-0 shrink-0 flex-col md:w-56 md:min-h-0 md:self-stretch">

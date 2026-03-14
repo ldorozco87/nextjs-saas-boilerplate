@@ -18,6 +18,18 @@ When editing this codebase, follow these rules to avoid breaking conventions or 
 - All UI must be **responsive**: use fluid layouts, responsive units (e.g. `rem`, `%`, `clamp()`), and media queries or container queries where needed so the app works well on phones, tablets, and desktops.
 - Avoid fixed widths that break on small viewports; prefer flex/grid and min/max constraints.
 
+## TanStack Query (API state)
+
+- **Use TanStack Query for all API state** (fetching, caching, mutations). In client components, prefer `useQuery` and `useMutation`; in server components you may keep direct fetch for initial load when that is sufficient.
+
+## Components and dictionary
+
+- **Reusing components is paramount.** Before creating a new component, check **`docs/COMPONENT_DICTIONARY.md`**. When you create a new reusable component, register it in that dictionary.
+
+## Zustand (global client state)
+
+- Use **Zustand** for global client state (UI, view preferences, etc.). Do not use React Context for global state when Zustand is sufficient. Reserve TanStack Query for API state only.
+
 ## Scripts
 
 - Use `bun run <script>` or `npm run <script>`; both are supported (see root README).
