@@ -18,6 +18,13 @@ When editing this codebase, follow these rules to avoid breaking conventions or 
 - All UI must be **responsive**: use fluid layouts, responsive units (e.g. `rem`, `%`, `clamp()`), and media queries or container queries where needed so the app works well on phones, tablets, and desktops.
 - Avoid fixed widths that break on small viewports; prefer flex/grid and min/max constraints.
 
+## Internationalization (i18n)
+
+- **Always use i18n** for all user-facing text. Do not hardcode strings in code.
+- Client components: `useTranslations("Namespace")` (next-intl). Server components: `getTranslations("Namespace")`.
+- Add keys to **`messages/en.json`** and **`messages/es.json`** (and any other locale in `src/i18n/routing.ts`).
+- Group keys by namespace/feature (e.g. Header, Dashboard, AuthMock). Reference: `src/i18n/routing.ts`, `messages/*.json`.
+
 ## TanStack Query (API state)
 
 - **Use TanStack Query for all API state** (fetching, caching, mutations). In client components, prefer `useQuery` and `useMutation`; in server components you may keep direct fetch for initial load when that is sufficient.
@@ -25,6 +32,11 @@ When editing this codebase, follow these rules to avoid breaking conventions or 
 ## Components and dictionary
 
 - **Reusing components is paramount.** Before creating a new component, check **`docs/COMPONENT_DICTIONARY.md`**. When you create a new reusable component, register it in that dictionary.
+
+## UI components (Shadcn)
+
+- **When creating new UI components**, use **Shadcn/ui** as the base: reuse existing components in **`src/components/ui/`** or add new ones from [shadcn/ui](https://ui.shadcn.com/) when needed (keeping project style and conventions).
+- Do not introduce alternative component libraries without justification; keep a single primitive base (Shadcn + Tailwind).
 
 ## Zustand (global client state)
 

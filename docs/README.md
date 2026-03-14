@@ -8,6 +8,7 @@ This folder is the **entry point for project documentation and specs**. Use it a
 
 **Quick references:**
 
+- **Best practices:** [BEST_PRACTICES.md](BEST_PRACTICES.md) — frontend, backend, DB design.
 - **Package managers:** npm and Bun; see root README for Bun installation and scripts.
 - **Lint & format:** Biome (see root README → Scripts)
 - **Mocks:** `src/mocks/auth/` (provider, guard, fallbacks, buttons), `src/mocks/db/` (Supabase client)
